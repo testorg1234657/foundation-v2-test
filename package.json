@@ -44,10 +44,10 @@
   "dependencies": {
     "async": "^3.2.3",
     "bchaddrjs": "^0.5.2",
-    "bech32": "0.0.3",
+    "bech32": "2.0.0",
     "bindings": "^1.3.0",
     "blake2b": "^2.1.4",
-    "bs58check": "^2.1.2",
+    "bs58check": "^4.0.0",
     "colors": "^1.4.0",
     "libsodium": "^0.7.3",
     "merkle-lib": "^2.0.10",
@@ -57,7 +57,7 @@
     "pm2": "^5.2.0",
     "sha3": "2.1.4",
     "uuid": "^8.3.2",
-    "zeromq": "^5.2.8"
+    "zeromq": "^6.0.3"
   },
   "devDependencies": {
     "codecov": "^3.8.1",
