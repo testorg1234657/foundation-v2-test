@@ -83,7 +83,9 @@ exports.decodeAddress = function (address, network) {
             }
         }
         /* eslint-disable-next-line no-empty */
-    } catch (e) {}
+    } catch (e) {
+        console.log("decodeAddress", e);
+    }
 
     // Try to Decode Bech32 Address
     try {
@@ -99,7 +101,9 @@ exports.decodeAddress = function (address, network) {
                 return exports.encodeAddress(decoded.data, "witnessscript");
         }
         /* eslint-disable-next-line no-empty */
-    } catch (e) {}
+    } catch (e) {
+        console.log("decodeAddress", e);
+    }
 
     // Invalid Address Specified
     throw new Error(
@@ -557,7 +561,7 @@ exports.sha256d = function (buffer) {
 // Generate Reverse Buffer from Input Hash
 exports.uint256BufferFromHash = function (hex) {
     let fromHex = Buffer.from(hex, "hex");
-    if (fromHex.length != 32) {
+    if (fromHex.length !== 32) {
         const empty = Buffer.alloc(32);
         empty.fill(0);
         fromHex.copy(empty);
