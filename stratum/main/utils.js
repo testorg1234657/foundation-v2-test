@@ -113,6 +113,7 @@ exports.decodeAddress = function (address, network) {
 
 // Decode Any Base58 Address
 exports.decodeBase58Address = function (address) {
+    console.log("bs58check", bs58check);
     const payload = bs58check.decode(address);
     if (payload.length < 21)
         throw new Error(`The address (${address}) given is too short`);
