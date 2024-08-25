@@ -58,20 +58,25 @@ const Manager = function (config, configMain) {
         if (!isNewBlock && !newBlock) return false;
         if (newBroadcast) _this.validJobs = {};
 
-        console.log("template");
-        const tmpTemplate = new Template(
-            _this.jobCounter.next(),
-            _this.config,
-            Object.assign({}, rpcData),
-            _this.extraNoncePlaceholder,
-        );
+        try {
+            const tmpTemplate = new Template(
+                _this.jobCounter.next(),
+                _this.config,
+                Object.assign({}, rpcData),
+                _this.extraNoncePlaceholder,
+            );
 
-        console.log("template", tmpTemplate);
-        // Update Current Template
-        _this.currentJob = tmpTemplate;
-        _this.emit("manager.block.new", tmpTemplate);
-        _this.validJobs[tmpTemplate.jobId] = tmpTemplate;
-        return true;
+            console.log("template", tmpTemplate);
+            // Update Current Template
+            _this.currentJob = tmpTemplate;
+            _this.emit("manager.block.new", tmpTemplate);
+            _this.validJobs[tmpTemplate.jobId] = tmpTemplate;
+            return true;
+        } catch (e) {
+            console.log("error", e);
+        }
+
+        return false;
     };
 
     // Process Submitted Share
