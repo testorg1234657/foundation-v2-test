@@ -127,6 +127,8 @@ exports.decodeBase58Address = function (address) {
 
 // Decode Any Bech32 Address
 exports.decodeBech32Address = function (address) {
+    console.log("address", address);
+
     const payload = bech32.decode(address);
     const data = bech32.fromWords(payload.words.slice(1));
     return {
