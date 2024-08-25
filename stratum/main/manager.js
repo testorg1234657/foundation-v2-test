@@ -66,7 +66,6 @@ const Manager = function (config, configMain) {
                 _this.extraNoncePlaceholder,
             );
 
-            console.log("template", tmpTemplate);
             // Update Current Template
             _this.currentJob = tmpTemplate;
             _this.emit("manager.block.new", tmpTemplate);

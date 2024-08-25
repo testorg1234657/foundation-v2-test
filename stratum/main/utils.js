@@ -82,11 +82,9 @@ exports.decodeAddress = function (address, network) {
                 return exports.encodeAddress(decoded.hash, "script");
             }
         }
-
-        console.log(decoded);
         /* eslint-disable-next-line no-empty */
     } catch (e) {
-        console.log("decodeAddress", e);
+        //console.log("decodeAddress", e);
     }
 
     // Try to Decode Bech32 Address
@@ -104,7 +102,7 @@ exports.decodeAddress = function (address, network) {
         }
         /* eslint-disable-next-line no-empty */
     } catch (e) {
-        console.log("decodeAddress", e);
+        //console.log("decodeAddress", e);
     }
 
     // Invalid Address Specified
