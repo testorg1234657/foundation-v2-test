@@ -56,7 +56,7 @@ const Loader = function (logger, configMain) {
         if (recipients && recipients.length >= 1) {
             const percentage = recipients.reduce(
                 (p_sum, a) => p_sum + a.percentage,
-                0,
+                0
             );
             if (percentage >= 1) {
                 const lines = [_this.text.loaderRecipientsText1()];
@@ -76,15 +76,21 @@ const Loader = function (logger, configMain) {
     this.handleConfigs = function () {
         let config = null;
         const normalizedPath = path.join(__dirname, "../../configs/");
-        if (fs.existsSync(normalizedPath + "litecoin.js")) {
-            config = require(normalizedPath + "litecoin.js");
+        if (fs.existsSync(normalizedPath + "luckycoin.js")) {
+            config = require(normalizedPath + "luckycoin.js");
+            if (!config.enabled) return;
+            if (!_this.checkPoolDaemons(config)) return;
+            if (!_this.checkPoolPorts(config)) return;
+            if (!_this.checkPoolRecipients(config)) return;
+        } else if (fs.existsSync(normalizedPath + "main.js")) {
+            config = require(normalizedPath + "main.js");
             if (!config.enabled) return;
             if (!_this.checkPoolDaemons(config)) return;
             if (!_this.checkPoolPorts(config)) return;
             if (!_this.checkPoolRecipients(config)) return;
         } else {
             throw new Error(
-                "Unable to find litecoin.js file. Read the installation/setup instructions",
+                "Unable to find neither 'luckycoin.js' nor 'main.js' configuration files."
             );
         }
         return config;
