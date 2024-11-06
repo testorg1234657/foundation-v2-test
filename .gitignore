@@ -9,3 +9,4 @@ configs/*
 !configs/example.js
 certificates/*
 !certificates/README.md
+package-lock.json
